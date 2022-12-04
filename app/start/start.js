@@ -16,7 +16,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             vm.submission = {};
 
             vm.extra_features = [
-                { id: 'knownclusterblast', description: 'KnownClusterBlast', default: true, stable: true, beta: true},
+                { id: 'knownclusterblast', description: 'KnownClusterBlast', default: true, stable: true, beta: true },
                 { id: 'clusterblast', description: 'ClusterBlast', default: false, stable: true, beta: true },
                 { id: 'subclusterblast', description: 'SubClusterBlast', default: true, stable: true, beta: true },
                 { id: 'cc_mibig', description: 'MIBiG cluster comparison', default: false, stable: true, beta: true },
@@ -36,8 +36,10 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             vm.strictness_levels = [
                 { id: 'strict', description: 'Detects well-defined clusters containing all required parts.' },
                 { id: 'relaxed', description: 'Detects partial clusters missing one or more functional parts.' },
-                { id: 'loose', description: 'Detects poorly-defined clusters and clusters that likely match primary metabolites.',
-                  warning: 'Likely to cause false positives.' },
+                {
+                    id: 'loose', description: 'Detects poorly-defined clusters and clusters that likely match primary metabolites.',
+                    warning: 'Likely to cause false positives.'
+                },
             ];
 
             vm.hmmdetection_strictness = 1;
@@ -109,7 +111,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
 
                 // IE can't do endsWith()
                 if (!String.prototype.endsWith) {
-                    String.prototype.endsWith = function(search_string, position) {
+                    String.prototype.endsWith = function (search_string, position) {
                         var subject = this.toString();
                         if (typeof position !== 'number' || !isFinite(postion) || Math.floor(postion) !== postion || postion > subject.length) {
                             postion = subject.length;
