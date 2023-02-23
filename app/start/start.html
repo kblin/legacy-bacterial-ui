@@ -4,7 +4,7 @@
       <form name="nucleotideForm" class="form" novalidate>
         <div class="form-group row offset-top">
           <div class="col-md-6">
-            Search a genome sequence for secondary metabolite biosynthetic gene clusters
+            <img src="images/experimentalsmash_logo.svg" height="30px"> Try out potential future antiSMASH features.
           </div>
           <div class="col-md-2">
             <button class="btn btn-default btn-block" ng-click="ctrl.loadSampleInput()">Load sample input</button>
@@ -13,6 +13,13 @@
             <button class="btn btn-default btn-block" ng-click="ctrl.openSampleOutput()">Open example output</button>
           </div>
         </div>
+        <fieldset>
+          <legend>Select feature to try:</legend>
+          <div class="form-group row">
+            <div class="col-md-4"><select ng-model="ctrl.selected_jobtype" name="jobtype" id="jobtype"
+                ng-options="option.name for option in ctrl.jobtype_options track by option.id"></select></div>
+          </div>
+        </fieldset>
         <fieldset>
           <legend>Notification settings</legend>
           <div class="form-group row">
@@ -24,14 +31,6 @@
               </p>
             </div>
             <label class="col-md-2" for="email">Email address (optional)</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>antiSMASH beta features</legend>
-          <div class="form-group row">
-            <div class="col-md-4 col-md-offset-1">
-              <label class="checkbox"><input type="checkbox" ng-model="ctrl.run_beta">Enable antiSMASH beta</label>
-            </div>
           </div>
         </fieldset>
         <fieldset>
@@ -84,65 +83,6 @@
             </div>
             <label for="gff" class="col-md-5">Feature annotations (optional, GFF3 format)</label>
           </div>
-          <div class="form-group row">
-            <div class="col-md-3 col-md-offset-1">
-              <label class="checkbox"><input type="checkbox" ng-model="ctrl.upload_sideload_file">Upload extra
-                annotations</label>
-            </div>
-          </div>
-          <div class="form-group row" ng-show="ctrl.upload_sideload_file">
-            <div class="col-md-3">
-              <a href="https://docs.antismash.secondarymetabolites.org/sideloading/" target="_blank">What is this?</a>
-            </div>
-            <div class="col-md-8">
-              <div class="col-md-6">
-                <div class="input-group">
-                  <input class="form-control" type="text" ng-model="ctrl.sideload_file.name" readonly>
-                  <span class="input-group-btn">
-                    <span class="btn btn-default btn-file"> Browse
-                      <input ng-model="ctrl.sideload_file" ngf-select type="file" id="sideload-file"
-                        ngf-accept="'.json'" ngf-pattern="'.json'"> </span>
-                  </span>
-                </div>
-              </div>
-              <label for="sideload-file" class="col-md-6">antiSMASH annotations sideload file (JSON).</label>
-            </div>
-          </div>
-
-        </fieldset>
-
-        <fieldset>
-          <legend>Detection strictness:
-            {{ ctrl.strictness_levels[ctrl.hmmdetection_strictness].id }}
-            <span class="strictness-warning">{{ ctrl.strictness_levels[ctrl.hmmdetection_strictness].warning }}</span>
-          </legend>
-          <div class="form-group row">
-            <div class="col-md-3" id="strictness-container">
-              <div id="strictness-labels">
-                <div ng-repeat="l in ctrl.strictness_levels">{{l.id}}</div>
-              </div>
-              <div id="strictness-slider">
-                <input type="range" min="0" max="2" ng-model="ctrl.hmmdetection_strictness">
-              </div>
-            </div>
-            <div class="col-md-9">
-              <ul>
-                <li ng-repeat="d in ctrl.strictness_descriptions()">{{ d }}</li>
-              </ul>
-            </div>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Extra features
-            <button class="btn btn-link" ng-click="ctrl.allOff()">All off</button>
-            <button class="btn btn-link" ng-click="ctrl.allOn()">All on</button>
-          </legend>
-          <div class="form-group row">
-            <div class="col-md-4" ng-repeat="c in ctrl.extra_features | filter: ctrl.filterFeatureByStatus">
-              <label class="checkbox"><input type="checkbox" ng-model="ctrl.submission[c.id]">{{c.description}}</label>
-            </div>
-          </div>
         </fieldset>
 
         <fieldset>
@@ -157,10 +97,10 @@
           </div>
           <div class="form-group row">
             <p>
-              Please be considerate in your use of antiSMASH. Help us keep antiSMASH available for
-              everybody by limiting yourself to 5 concurrent jobs. Need to run more? See the
-              <a href="http://docs.antismash.secondarymetabolites.org/install/">antiSMASH install guide</a>
-              for instructions for getting your own antiSMASH installation.
+              <img src="images/hazard.svg" height="30px">
+              Features available on this page are experimental and are not guaranteed to work, produce correct results,
+              or be contained in any future official release.
+              <img src="images/hazard.svg" height="30px">
             </p>
           </div>
         </fieldset>
