@@ -15,7 +15,6 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             vm.jobtype_options = [
                 { id: "", name: "Please select a jobtype" },
                 { id: "paras", name: "PARAS" },
-                { id: "test", name: "test" },
             ];
             vm.selected_jobtype = { id: "", name: "Please select a jobtype" };
 
